@@ -23,3 +23,5 @@ Route::prefix('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 });
 
+//Route::resource('livros', UserController::class);
+
