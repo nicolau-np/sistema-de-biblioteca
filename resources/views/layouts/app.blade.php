@@ -20,8 +20,10 @@
   </head>
   <body>
     <div class="container-scroller">
-
-      <!-- partial:partials/_navbar.html -->
+@if ($type=="login")
+@yield('content')
+@else
+ <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
           <a class="navbar-brand brand-logo" href="/">Sis BiBlioteca</a>
@@ -180,6 +182,8 @@
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->
+@endif
+
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->

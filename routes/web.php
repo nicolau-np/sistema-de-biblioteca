@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'home'])->middleware('auth');
 
 Route::prefix('auth')->group(function () {
     Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('guest');
