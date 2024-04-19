@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Livro;
 use Illuminate\Http\Request;
 
 class LivroController extends Controller
@@ -11,11 +12,13 @@ class LivroController extends Controller
      */
     public function index()
     {
+        $livros = Livro::all();
+
         $title="Livros";
         $type="livros";
         $menu="Livros";
 
-        return view('livros.index', compact('title', 'type', 'menu'));
+        return view('livros.index', compact('title', 'type', 'menu', 'livros'));
     }
 
     /**
@@ -23,7 +26,11 @@ class LivroController extends Controller
      */
     public function create()
     {
-        //
+         $title="Livros";
+        $type="livros";
+        $menu="Livros";
+
+        return view('livros.create', compact('title', 'type', 'menu'));
     }
 
     /**
@@ -31,7 +38,19 @@ class LivroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'titulo'=>'required|string',
+            'numero_de_paginas'=>'required|integer|min:1',
+'editora'=>'required|string',
+'edicao'=>'required|string',
+'data_de_publicacao'=>'required|date',
+'quantidade_existente'=>'required|integer|min:1',
+
+        ],[],[]);
+
+        Livro::create($request->all());
+
+        return back()->with('success', 'Feito com sucesso');
     }
 
     /**
