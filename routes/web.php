@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LeitorController;
+use App\Http\Controllers\LivroController;
+use App\Http\Controllers\PedidoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,5 +26,7 @@ Route::prefix('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 });
 
-//Route::resource('livros', UserController::class);
+Route::resource('livros', LivroController::class);
+Route::resource('leitores', LeitorController::class);
+Route::resource('pedidos', PedidoController::class);
 

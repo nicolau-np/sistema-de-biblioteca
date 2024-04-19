@@ -11,7 +11,11 @@ class LivroController extends Controller
      */
     public function index()
     {
-        //
+        $title="Livros";
+        $type="livros";
+        $menu="Livros";
+
+        return view('livros.index', compact('title', 'type', 'menu'));
     }
 
     /**
