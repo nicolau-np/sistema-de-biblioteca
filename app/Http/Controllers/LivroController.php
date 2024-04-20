@@ -86,7 +86,21 @@ class LivroController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $livro = Livro::findOrFail($id);
+
+        $this->validate($request, [
+            'titulo' => 'required|string',
+            'numero_de_paginas' => 'required|integer|min:1',
+            'editora' => 'required|string',
+            'edicao' => 'required|string',
+            'data_de_publicacao' => 'required|date',
+            'quantidade_existente' => 'required|integer|min:1',
+
+        ], [], []);
+
+       $livro->update($request->all());
+
+        return back()->with('success', 'Feito com sucesso');
     }
 
     /**
