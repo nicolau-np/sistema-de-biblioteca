@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function(){
+    return redirect()->route('home');
+});
+
 Route::get('/home', [HomeController::class, 'home'])->name('home')->middleware('auth');
 
 Route::prefix('auth')->group(function () {

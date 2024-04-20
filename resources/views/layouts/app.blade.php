@@ -73,54 +73,7 @@
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">
-            <li class="nav-item nav-profile">
-              <a href="#" class="nav-link">
-                <div class="nav-profile-image">
-                  <img src="{{asset('assets/neutro/images/user.png')}}" alt="profile">
-                  <span class="login-status online"></span>
-                  <!--change to offline or busy as needed-->
-                </div>
-                <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">{{ Auth::user()->name }}</span>
-                  <span class="text-secondary text-small">{{ Auth::user()->nivel_acesso }}</span>
-                </div>
-                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/home">
-                <span class="menu-title">Principal</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="/livros">
-                <span class="menu-title">Livros</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/pedidos">
-                <span class="menu-title">Pedidos</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/leitores">
-                <span class="menu-title">Leitores</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/relatorios">
-                <span class="menu-title">Relatórios</span>
-                <i class="mdi mdi-table-large menu-icon"></i>
-              </a>
-            </li>
-
-          </ul>
+        <x-menu :type="$type"/>
         </nav>
         <!-- partial -->
         <div class="main-panel">
