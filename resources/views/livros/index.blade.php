@@ -5,9 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">{{ $menu }}</h4>
-                    <div class="search mb-4">
-                        <x-panel-de-pesquisa prefixroute="/livros" />
-                    </div>
+                    <x-panel-de-pesquisa prefixroute="/livros" />
 
                     <div class="table-responsive mb-4">
                         <table class="table table-bordered">
@@ -34,7 +32,7 @@
                                         <td>
                                             <a href="/livros/{{ $livro->id }}"
                                                 class="btn btn-warning btn-sm">Detalhes</a>
-                                            <a href="/livros/{{ $livro->id }}"
+                                            <a href="/livros/{{ $livro->id }}/edit"
                                                 class="btn btn-primary btn-sm ml-2">Editar</a>
                                         </td>
                                     </tr>

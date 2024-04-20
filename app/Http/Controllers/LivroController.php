@@ -12,11 +12,11 @@ class LivroController extends Controller
      */
     public function index()
     {
-        $livros = Livro::paginate(1);
+        $livros = Livro::paginate(10);
 
-        $title="Livros";
-        $type="livros";
-        $menu="Livros";
+        $title = "Livros";
+        $type = "livros";
+        $menu = "Livros";
 
         return view('livros.index', compact('title', 'type', 'menu', 'livros'));
     }
@@ -26,9 +26,9 @@ class LivroController extends Controller
      */
     public function create()
     {
-         $title="Livros";
-        $type="livros";
-        $menu="Livros";
+        $title = "Livros";
+        $type = "livros";
+        $menu = "Livros";
 
         return view('livros.create', compact('title', 'type', 'menu'));
     }
@@ -39,14 +39,14 @@ class LivroController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'titulo'=>'required|string',
-            'numero_de_paginas'=>'required|integer|min:1',
-'editora'=>'required|string',
-'edicao'=>'required|string',
-'data_de_publicacao'=>'required|date',
-'quantidade_existente'=>'required|integer|min:1',
+            'titulo' => 'required|string',
+            'numero_de_paginas' => 'required|integer|min:1',
+            'editora' => 'required|string',
+            'edicao' => 'required|string',
+            'data_de_publicacao' => 'required|date',
+            'quantidade_existente' => 'required|integer|min:1',
 
-        ],[],[]);
+        ], [], []);
 
         Livro::create($request->all());
 
@@ -58,7 +58,13 @@ class LivroController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $livro = Livro::findOrFail($id);
+
+        $title = "Livros";
+        $type = "livros";
+        $menu = "Livros";
+
+        return view('livros.show', compact('title', 'type', 'menu', 'livro'));
     }
 
     /**
@@ -66,7 +72,13 @@ class LivroController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $livro = Livro::findOrFail($id);
+
+        $title = "Livros";
+        $type = "livros";
+        $menu = "Livros";
+
+        return view('livros.edit', compact('title', 'type', 'menu', 'livro'));
     }
 
     /**
