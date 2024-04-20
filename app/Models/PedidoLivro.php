@@ -12,7 +12,7 @@ class PedidoLivro extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-       'pessoa_id',
+       'leitor_id',
        'livro_id',
        'user_id',
         'data_do_pedido',
@@ -22,8 +22,8 @@ class PedidoLivro extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function pessoa():BelongsTo{
-        return $this->belongsTo(Pessoa::class, 'pessoa_id');
+    public function leitor():BelongsTo{
+        return $this->belongsTo(Leitor::class, 'leitor_id');
     }
 
     public function livro():BelongsTo{

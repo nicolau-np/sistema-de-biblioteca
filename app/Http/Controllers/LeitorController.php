@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Leitor;
 use Illuminate\Http\Request;
 
 class LeitorController extends Controller
@@ -11,7 +12,13 @@ class LeitorController extends Controller
      */
     public function index()
     {
-        //
+        $leitores = Leitor::paginate(10);
+
+        $title = "Leitores";
+        $type = "leitores";
+        $menu = "Leitores";
+
+        return view('leitores.index', compact('title', 'type', 'menu', 'leitores'));
     }
 
     /**
@@ -19,7 +26,11 @@ class LeitorController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Leitores";
+        $type = "leitores";
+        $menu = "Leitores";
+
+        return view('leitores.create', compact('title', 'type', 'menu'));
     }
 
     /**
@@ -27,7 +38,19 @@ class LeitorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nome' => 'required|string',
+            'bi' => 'required|string',
+            'genero' => 'required|string',
+            'data_nascimento' => 'required|date',
+            'origem' => 'required|string',
+            'tipo' => 'required|string',
+            'telefone' => 'required|string',
+        ], [], []);
+
+        Leitor::create($request->all());
+
+        return back()->with('success', "Feito com sucesso");
     }
 
     /**
@@ -35,7 +58,13 @@ class LeitorController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $leitor = Leitor::findOrFail($id);
+
+        $title = "Leitores";
+        $type = "leitores";
+        $menu = "Leitores";
+
+        return view('leitores.show', compact('title', 'type', 'menu', 'leitor'));
     }
 
     /**

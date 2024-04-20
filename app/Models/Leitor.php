@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Pessoa extends Model
+class Leitor extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -26,6 +26,6 @@ class Pessoa extends Model
 
     public function pedidoLivro(): HasMany
     {
-        return $this->hasMany(PedidoLivro::class, 'pessoa_id');
+        return $this->hasMany(PedidoLivro::class, 'leitor_id');
     }
 }
