@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}" />
-  </head>
+<link rel="stylesheet" href="{{ asset('assets/neutro/css/style.css') }}"/>
+</head>
   <body>
     <div class="container-scroller">
 @if ($type=="login")

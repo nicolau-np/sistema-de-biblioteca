@@ -5,15 +5,14 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">{{ $menu }}</h4>
-                    <p class="card-description"> <code><a href="/livros">Listar</a></code>
-                    </p>
+                    <a href="/livros" class="btn btn-success mb-4">Listar</a>
 
                     <div class="form">
                         <form action="/livros" method="post">
                             @csrf
                             @method('POST')
                             <div class="row">
-                                <div class="col-md-">
+                                <div class="col-md-12">
                                     @include('include.message')
                                 </div>
                             </div>

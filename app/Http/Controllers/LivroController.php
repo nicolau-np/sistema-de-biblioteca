@@ -94,6 +94,10 @@ class LivroController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $livro = Livro::findOrFail($id);
+
+        $livro->delete();
+
+        return redirect('/livros')->with('success', 'Eliminado com sucesso');
     }
 }

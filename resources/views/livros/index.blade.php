@@ -7,6 +7,11 @@
                     <h4 class="card-title">{{ $menu }}</h4>
                     <x-panel-de-pesquisa prefixroute="/livros" />
 
+                    <div class="row">
+                        <div class="col-md-12">
+                            @include('include.message')
+                        </div>
+                    </div>
                     <div class="table-responsive mb-4">
                         <table class="table table-bordered">
                             <thead>
