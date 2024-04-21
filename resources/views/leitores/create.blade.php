@@ -30,7 +30,7 @@
                                 <div class="col-md-3 mb-3">
                                     <label for="" class="mb-2">Nº de B.I/Cedula <span
                                             class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" placeholder="Nº de B.I/Cedula" name="bi"
+                                    <input type="text" class="form-control" placeholder="Nº de B.I/Cedula" name="bi"
                                         value="{{ old('bi', null) }}" />
                                     @if ($errors->has('bi'))
                                         <span class="text-danger">{{ $errors->first('bi') }}</span>
@@ -81,9 +81,9 @@
                                             class="text-danger">*</span></label>
                                     <select name="tipo" id="" class="form-control form-control-sm">
                                         <option value="" hidden>Tipo</option>
-                                        <option value="Estudante">Estudante</option>
-                                        <option value="Professor">Professor</option>
-                                        <option value="Visitante">Visitante</option>
+                                        <option value="Estudante" {{ old('tipo')=="Estudante" ? 'selected' : null }}>Estudante</option>
+                                        <option value="Professor" {{ old('tipo')=="Professor" ? 'selected' : null }}>Professor</option>
+                                        <option value="Visitante" {{ old('tipo')=="Visitante" ? 'selected' : null }}>Visitante</option>
                                     </select>
 
                                     @if ($errors->has('tipo'))
@@ -92,7 +92,8 @@
                                 </div>
 
                                 <div class="col-md-3 mb-3">
-                                    <label for="" class="mb-2">Telefone </label>
+                                    <label for="" class="mb-2">Telefone <span
+                                        class="text-danger">*</span></label>
                                     <input type="text" class="form-control" placeholder="Telefone" name="telefone"
                                         value="{{ old('telefone', null) }}" />
                                     @if ($errors->has('telefone'))

@@ -72,7 +72,13 @@ class LeitorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $leitor = Leitor::findOrFail($id);
+
+        $title = "Leitores";
+        $type = "leitores";
+        $menu = "Leitores";
+
+        return view('leitores.edit', compact('title', 'type', 'menu', 'leitor'));
     }
 
     /**
@@ -80,7 +86,21 @@ class LeitorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $leitor = Leitor::findOrFail($id);
+
+        $this->validate($request, [
+            'nome' => 'required|string',
+            'bi' => 'required|string',
+            'genero' => 'required|string',
+            'data_nascimento' => 'required|date',
+            'origem' => 'required|string',
+            'tipo' => 'required|string',
+            'telefone' => 'required|string',
+        ], [], []);
+
+        $leitor->update($request->all());
+
+        return back()->with('success', "Feito com sucesso");
     }
 
     /**
@@ -88,6 +108,10 @@ class LeitorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $leitor = Leitor::findOrFail($id);
+
+        $leitor->delete();
+
+        return redirect('/leitores')->with('success', "Eliminado com sucesso");
     }
 }
