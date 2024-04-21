@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PedidoLivro;
 use Illuminate\Http\Request;
 
 class PedidoController extends Controller
@@ -11,7 +12,13 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
+        $pedidos = PedidoLivro::paginate(10);
+
+        $title = "Livros";
+        $type = "livros";
+        $menu = "Livros";
+
+        return view('pedidos.index', compact('title', 'type', 'menu', 'pedidos'));
     }
 
     /**

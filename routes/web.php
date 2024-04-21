@@ -30,7 +30,7 @@ Route::prefix('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 });
 
-Route::resource('livros', LivroController::class);
-Route::resource('leitores', LeitorController::class);
-Route::resource('pedidos', PedidoController::class);
+Route::resource('livros', LivroController::class)->middleware('auth');
+Route::resource('leitores', LeitorController::class)->middleware('auth');
+Route::resource('pedidos', PedidoController::class)->middleware('auth');
 
