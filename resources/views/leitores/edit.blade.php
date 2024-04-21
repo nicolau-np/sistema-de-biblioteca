@@ -39,7 +39,7 @@
 
                                 <div class="col-md-3 mb-3">
                                     <label for="" class="mb-2">Gênero <span class="text-danger">*</span></label>
-                                    <select name="genero" class="form-control form-control-sm">
+                                    <select name="genero" class="form-select form-control-sm">
                                         <option value="" hidden>Gênero</option>
                                         <option value="Masculino" {{ old('genero', $leitor->genero) == 'Masculino' ? 'selected' : null }}>
                                             Masculino</option>
@@ -64,7 +64,7 @@
 
                                 <div class="col-md-3 mb-3">
                                     <label for="" class="mb-2">Origem <span class="text-danger">*</span></label>
-                                    <select name="origem" id="" class="form-control form-control-sm">
+                                    <select name="origem" id="" class="form-select form-control-sm">
                                         <option value="" hidden>Origem</option>
                                         <option value="Interno" {{ old('origem', $leitor->origem) == 'Interno' ? 'selected' : null }}>Interno
                                         </option>
@@ -79,7 +79,7 @@
                                 <div class="col-md-2 mb-3">
                                     <label for="" class="mb-2">Tipo <span
                                             class="text-danger">*</span></label>
-                                    <select name="tipo" id="" class="form-control form-control-sm">
+                                    <select name="tipo" id="" class="form-select form-control-sm">
                                         <option value="" hidden>Tipo</option>
                                         <option value="Estudante" {{ old('tipo', $leitor->tipo)=="Estudante" ? 'selected' : null }}>Estudante</option>
                                         <option value="Professor" {{ old('tipo', $leitor->tipo)=="Professor" ? 'selected' : null }}>Professor</option>

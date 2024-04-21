@@ -32,7 +32,7 @@
                                         <td>{{ $pedido->leitor->bi }}</td>
                                         <td>{{ $pedido->livro->titulo }}</td>
                                         <td>{{ date('d-m-Y', strtotime($pedido->data_do_pedido)) }}</td>
-                                        <td>{{ date('d-m-Y', strtotime($pedido->data_de_devolucao)) }}</td>
+                                        <td>{{ $pedido->data_de_devolucao ? date('d-m-Y', strtotime($pedido->data_de_devolucao)) : null }}</td>
                                         <td>{{ $pedido->user->name }}</td>
                                         <td>
                                             <a href="/pedidos/{{ $pedido->id }}"

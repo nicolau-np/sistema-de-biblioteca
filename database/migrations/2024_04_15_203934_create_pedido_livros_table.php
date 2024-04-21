@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('livro_id');
             $table->unsignedBigInteger('user_id');
             $table->date('data_do_pedido');
-            $table->date('data_de_devolucao');
+            $table->date('data_de_devolucao')->nullable();
             $table->text('obs')->nullable();
             $table->timestamps();
             $table->softDeletes();

@@ -18,7 +18,8 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}" />
 <link rel="stylesheet" href="{{ asset('assets/neutro/css/style.css') }}"/>
- <!--select 2 tags-->
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+<!--select 2 tags-->
  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
@@ -100,10 +101,11 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="{{asset('assets/vendors/js/vendor.bundle.base.js')}}"></script>
+   {{--  <script src="{{asset('assets/vendors/js/vendor.bundle.base.js')}}"></script> --}}
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="{{asset('assets/vendors/chart.js')}}/Chart.min.js')}}"></script>
+    {{-- <script src="{{asset('assets/vendors/chart.js')}}/Chart.min.js')}}"></script> --}}
+
     <script src="{{asset('assets/js/jquery.cookie.js')}}" type="text/javascript"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
@@ -115,5 +117,6 @@
     <script src="{{asset('assets/js/dashboard.js')}}"></script>
     <script src="{{asset('assets/js/todolist.js')}}"></script>
     <!-- End custom js for this page -->
+
   </body>
 </html>

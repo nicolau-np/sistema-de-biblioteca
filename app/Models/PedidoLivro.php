@@ -12,25 +12,28 @@ class PedidoLivro extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-       'leitor_id',
-       'livro_id',
-       'user_id',
+        'leitor_id',
+        'livro_id',
+        'user_id',
         'data_do_pedido',
         'data_de_devolucao',
-       'obs',
+        'obs',
     ];
 
     protected $dates = ['deleted_at'];
 
-    public function leitor():BelongsTo{
+    public function leitor(): BelongsTo
+    {
         return $this->belongsTo(Leitor::class, 'leitor_id');
     }
 
-    public function livro():BelongsTo{
+    public function livro(): BelongsTo
+    {
         return $this->belongsTo(Livro::class, 'livro_id');
     }
 
-    public function user():BelongsTo{
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 }
