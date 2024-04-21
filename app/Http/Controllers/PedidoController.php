@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Leitor;
+use App\Models\Livro;
 use App\Models\PedidoLivro;
 use Illuminate\Http\Request;
 
@@ -14,9 +16,9 @@ class PedidoController extends Controller
     {
         $pedidos = PedidoLivro::paginate(10);
 
-        $title = "Livros";
-        $type = "livros";
-        $menu = "Livros";
+        $title = "Pedidos";
+        $type = "pedidos";
+        $menu = "Pedidos";
 
         return view('pedidos.index', compact('title', 'type', 'menu', 'pedidos'));
     }
@@ -26,7 +28,13 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        //
+        $livros = Livro::all();
+        $leitores = Leitor::all();
+        $title = "Pedidos";
+        $type = "pedidos";
+        $menu = "Pedidos";
+
+        return view('pedidos.create', compact('title', 'type', 'menu', 'livros', 'leitores'));
     }
 
     /**
@@ -34,7 +42,7 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**

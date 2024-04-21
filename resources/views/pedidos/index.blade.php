@@ -16,24 +16,24 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th> Titulo </th>
-                                    <th> Nº de Pag. </th>
-                                    <th> Editora </th>
-                                    <th> Edição </th>
-                                    <th> Data de Publicação </th>
-                                    <th> Total </th>
+                                    <th> Nome </th>
+                                    <th> Nº de B.I. </th>
+                                    <th> Titulo do Livro </th>
+                                    <th> Data de pedido </th>
+                                    <th> Data de devolução </th>
+                                    <th> Operador </th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($pedidos as $pedido)
                                     <tr>
-                                        <td>{{ Str::limit($pedido->titulo,30) }}</td>
-                                        <td>{{ $pedido->numero_de_paginas }}</td>
-                                        <td>{{ $pedido->editora }}</td>
-                                        <td>{{ $pedido->edicao }}</td>
-                                        <td>{{ date('d-m-Y', strtotime($pedido->data_de_publicacao)) }}</td>
-                                        <td>{{ $pedido->quantidade_existente }}</td>
+                                        <td>{{ Str::limit($pedido->leitor->nome,30) }}</td>
+                                        <td>{{ $pedido->leitor->bi }}</td>
+                                        <td>{{ $pedido->livro->titulo }}</td>
+                                        <td>{{ date('d-m-Y', strtotime($pedido->data_do_pedido)) }}</td>
+                                        <td>{{ date('d-m-Y', strtotime($pedido->data_de_devolucao)) }}</td>
+                                        <td>{{ $pedido->user->name }}</td>
                                         <td>
                                             <a href="/pedidos/{{ $pedido->id }}"
                                                 class="btn btn-warning btn-sm">Detalhes</a>
