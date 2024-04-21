@@ -68,7 +68,13 @@ class PedidoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pedido = PedidoLivro::findOrFail($id);
+
+        $title = "Pedidos";
+        $type = "pedidos";
+        $menu = "Pedidos";
+
+        return view('pedidos.show', compact('title', 'type', 'menu', 'pedido'));
     }
 
     /**
@@ -76,7 +82,14 @@ class PedidoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pedido= PedidoLivro::findOrFail($id);
+        $livros = Livro::all();
+        $leitores = Leitor::all();
+        $title = "Pedidos";
+        $type = "pedidos";
+        $menu = "Pedidos";
+
+        return view('pedidos.edit', compact('title', 'type', 'menu', 'livros', 'leitores', 'pedido'));
     }
 
     /**
@@ -84,7 +97,25 @@ class PedidoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pedido= PedidoLivro::findOrFail($id);
+
+        $this->validate($request, [
+            'leitor_id'=>'required|exists:leitors,id',
+            'livro_id'=>'required|exists:livros,id',
+            'data_do_pedido'=>'required|date',
+           ],[],[]);
+
+           $data =[
+            'leitor_id'=>$request->leitor_id,
+            'livro_id'=>$request->livro_id,
+            'user_id'=>Auth::user()->id,
+            'data_do_pedido'=>$request->data_do_pedido,
+            'data_de_devolucao'=>$request->data_de_devolucao,
+           ];
+
+           $pedido->update($data);
+
+           return back()->with('success', 'Feito com sucesso');
     }
 
     /**
@@ -92,6 +123,10 @@ class PedidoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pedido= PedidoLivro::findOrFail($id);
+
+        $pedido->delete();
+
+        return redirect('/pedidos')->with('success', "Eliminado com sucesso");
     }
 }
