@@ -7,9 +7,9 @@
                     <h4 class="card-title">{{ $menu }}</h4>
 
                     <div class="form">
-                        <form action="/relatorios/print/pedidos-feitos" method="post">
+                        <form action="/relatorios/print/pedidos-feitos" method="get">
                             @csrf
-                            @method('POST')
+                            @method('GET')
                             <div class="row">
                                 <div class="col-md-12">
                                     @include('include.message')
@@ -30,7 +30,7 @@
                                     <label for="" class="mb-2">Data Final <span
                                             class="text-danger">*</span></label>
                                     <input type="date" class="form-control" placeholder="Data Final"
-                                        name="data_inicial" value="{{ old('data_final', null) }}" />
+                                        name="data_final" value="{{ old('data_final', null) }}" />
                                     @if ($errors->has('data_final'))
                                         <span class="text-danger">{{ $errors->first('data_final') }}</span>
                                     @endif
