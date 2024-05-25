@@ -32,8 +32,11 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::resource('livros', LivroController::class)->middleware('auth');
+Route::post('livros/search', [LivroController::class, 'search'])->middleware('auth');
 Route::resource('leitores', LeitorController::class)->middleware('auth');
+Route::post('leitores/search', [LeitorController::class, 'search'])->middleware('auth');
 Route::resource('pedidos', PedidoController::class)->middleware('auth');
+Route::post('pedidos/search', [PedidoController::class, 'search'])->middleware('auth');
 
 Route::prefix('relatorios')->group(function () {
     Route::get('/', [RelatorioController::class, 'index']);

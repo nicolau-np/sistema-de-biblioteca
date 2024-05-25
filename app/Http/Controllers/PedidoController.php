@@ -129,4 +129,23 @@ class PedidoController extends Controller
 
         return redirect('/pedidos')->with('success', "Eliminado com sucesso");
     }
+
+    public function search(Request $request){
+        $this->validate($request, [
+            'text_pesquisa'=>'required|string',
+        ],[],[
+            'text_pesquisa'=>'Texto da Pesquida'
+        ]);
+
+        $texto_pesquisado = $request->text_pesquisa;
+
+        $pedidos = PedidoLivro::where('data_do_pedido', 'LIKE', "%{$request->text_pesquisa}%")
+            ->paginate(40);
+
+        $title = "Pedidos";
+        $type = "pedidos";
+        $menu = "Pedidos";
+
+        return view('pedidos.search', compact('pedidos', 'texto_pesquisado', 'title', 'type', 'menu'));
+    }
 }

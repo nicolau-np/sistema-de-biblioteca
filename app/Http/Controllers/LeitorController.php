@@ -114,4 +114,26 @@ class LeitorController extends Controller
 
         return redirect('/leitores')->with('success', "Eliminado com sucesso");
     }
+
+    public function search(Request $request){
+        $this->validate($request, [
+            'text_pesquisa'=>'required|string',
+        ],[],[
+            'text_pesquisa'=>'Texto da Pesquida'
+        ]);
+
+
+        $texto_pesquisado = $request->text_pesquisa;
+
+        $leitores = Leitor::where('nome', 'LIKE', "%{$request->text_pesquisa}%")
+            ->orWhere('bi', 'LIKE', "%{$request->text_pesquisa}%")
+            ->orWhere('tipo', 'LIKE', "%{$request->text_pesquisa}%")
+            ->paginate(40);
+
+        $title = "Leitores";
+        $type = "leitores";
+        $menu = "Leitores";
+
+        return view('leitores.search', compact('leitores', 'texto_pesquisado', 'title', 'type', 'menu'));
+    }
 }

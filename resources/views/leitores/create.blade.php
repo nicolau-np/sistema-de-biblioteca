@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">{{ $menu }}</h4>
-                    <a href="/livros" class="btn btn-success mb-4">Listar</a>
+                    <a href="/leitores" class="btn btn-success mb-4">Listar</a>
 
                     <div class="form">
                         <form action="/leitores" method="post">

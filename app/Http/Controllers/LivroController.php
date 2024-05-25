@@ -114,4 +114,25 @@ class LivroController extends Controller
 
         return redirect('/livros')->with('success', 'Eliminado com sucesso');
     }
+
+    public function search(Request $request){
+        $this->validate($request, [
+            'text_pesquisa'=>'required|string',
+        ],[],[
+            'text_pesquisa'=>'Texto da Pesquida'
+        ]);
+
+
+        $texto_pesquisado = $request->text_pesquisa;
+
+        $livros = Livro::where('titulo', 'LIKE', "%{$request->text_pesquisa}%")
+            ->orWhere('editora', 'LIKE', "%{$request->text_pesquisa}%")
+            ->paginate(40);
+
+        $title = "Livros";
+        $type = "livros";
+        $menu = "Livros";
+
+        return view('livros.search', compact('livros', 'texto_pesquisado', 'title', 'type', 'menu'));
+    }
 }
